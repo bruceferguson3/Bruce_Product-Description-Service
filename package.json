@@ -2,9 +2,8 @@
     "name": "product_description",
     "main": "webpack.config.js",
     "scripts": {
-        "start": "webpack -d --watch & live-server --port=3030 --watch=public --open=public",
-        "start-oh": "webpack -d --watch",
-        "dev": "nodemon server/server.js"
+        "react-dev": "webpack -d --watch",
+        "server-dev": "nodemon server/server.js"
     },
     "repository": {
         "type": "git",
