@@ -9,7 +9,7 @@ const TopPackage = (props) => {
         <div className='topPackage'>
             <h1 className='productHeading'>{props.pName}</h1>
             <div className='productDescr'>{props.pDescr}</div>
-            <div className='productHeading'>{props.pPrice}</div>
+            <div className='productHeading'>{`$${props.pPrice}`}</div>
             <div className='productDescr'>
               <span className='starContainer'>
                   <span className='starColor'/>
@@ -17,7 +17,10 @@ const TopPackage = (props) => {
               </span>
               <span className='productDescr'>{props.pReviewAvg}</span>
               <span className='productDescr'>{props.pReviewCounter} Review</span>
-
+            </div>
+            <div className='benefitDescr'>
+                {props.pBenefit}
+                <a className='readMore'>Read More</a>
             </div>
         </div>
 
