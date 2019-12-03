@@ -8,9 +8,9 @@ const MiddlePackage = (props) => {
         <div className='middlePackage'>
             <span className='quantityTitle'>Quantity</span>
             <div className='quantityBox'>
-                <button className='decrQuant' disabled={true}>-</button>
+                <button className='decrQuant' disabled={props.pQuantity <= 1} onClick={props.qDec}>-</button>
                 <span id='Quantity'>{props.pQuantity}</span>
-                <button className='incQuant'>+</button>
+                <button className='incQuant' onClick={props.qInc}>+</button>
             </div>
         </div>
 

@@ -9,26 +9,40 @@ class App extends React.Component {
 
 
         this.state = {
-            productId: 3,
-            productName: 'HAVSTEN',
-            productDescr: 'Chair, in/outdoor, beige, 32 5/8x37x35 3/8 "',
-            productPrice: 260.00,
-            productReviewAvg: 5.0,
-            productReviewCounter: 1,
-            productBenefit: 'If you like the look, try how it feels. Generous seats, fluffy cushions as well as elastic mesh fabric make the sofa comfortable. Create your own combination, sit back and relax. Outdoors or indoors!',
+            productId: '',
+            productName: '',
+            productDescr: '',
+            productPrice: '',
+            productReviewAvg: '',
+            productReviewCounter: '',
+            productBenefit: '',
             productSizeOpt: '',
             productColorOpt: '',
+            productOnSale: 0,
+            productNew: 0,
             productQuantity: 1
-        }
+        };
 
+        this.incQuantityCount = this.incQuantityCount.bind(this);
+        this.decQuantityCount = this.decQuantityCount.bind(this);
+    }
 
+    incQuantityCount() {
+       let productQuant = this.state.productQuantity;
+       this.setState({productQuantity: productQuant+1})
+    }
+
+    decQuantityCount() {
+        let productQuant = this.state.productQuantity;
+        this.setState({productQuantity: productQuant-1})
     }
 
     componentDidMount() {
         axios.get('/displayProduct')
             .then((productInfo) => {
                 console.log('GOT THE PRODUCT');
-                console.log(productInfo.data);
+                console.log(productInfo.data[0].onSale);
+                console.log(productInfo.data[0].new);
                 this.setState({productId: productInfo.data[0].id,
                                      productName: productInfo.data[0].name,
                                      productDescr: productInfo.data[0].miniDescription,
@@ -37,10 +51,12 @@ class App extends React.Component {
                                      productReviewCounter: productInfo.data[0].reviewCount,
                                      productBenefit: productInfo.data[0].benefit,
                                      productSizeOpt: productInfo.data[0].size,
-                                     productColorOpt: productInfo.data[0].color})
+                                     productColorOpt: productInfo.data[0].color,
+                                     productOnSale: productInfo.data[0].onSale,
+                                     productNew: productInfo.data[0].new})
             })
-            .catch(() => {
-                console.log('NO PRODUCT INFO')
+            .catch((err) => {
+                console.log(err)
             })
     }
 
@@ -53,9 +69,13 @@ class App extends React.Component {
                             pPrice={this.state.productPrice}
                             pReviewAvg={this.state.productReviewAvg}
                             pReviewCounter={this.state.productReviewCounter}
-                            pBenefit={this.state.productBenefit}/>
+                            pBenefit={this.state.productBenefit}
+                            pOnSale={this.state.productOnSale}
+                            pNew={this.state.productNew}/>
 
-                <MiddlePackage pQuantity={this.state.productQuantity} />
+                <MiddlePackage pQuantity={this.state.productQuantity}
+                               qInc={this.incQuantityCount}
+                               qDec={this.decQuantityCount}/>
             </div>
         )
     }

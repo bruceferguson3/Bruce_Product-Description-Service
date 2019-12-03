@@ -7,6 +7,7 @@ const TopPackage = (props) => {
     return (
 
         <div className='topPackage'>
+            {props.pNew === 1 ? (<p className='newBox'>New</p>) : (<span hidden/>)}
             <h1 className='productHeading'>{props.pName}</h1>
             <div className='productDescr'>{props.pDescr}</div>
             <div className='productHeading'>{`$${props.pPrice}`}</div>
@@ -15,8 +16,8 @@ const TopPackage = (props) => {
                   <span className='starColor'/>
                   <span className='star'/>
               </span>
-              <span className='productDescr'>{props.pReviewAvg}</span>
-              <span className='productDescr'>{props.pReviewCounter} Review</span>
+              <span className='productDescr'>{props.pReviewAvg < 0.1 ? '' : `${props.pReviewAvg}`}</span>
+              <span className='productDescr'>{props.pReviewCounter !== 1 ? `${props.pReviewCounter} Reviews` :  `${props.pReviewCounter} Review`}</span>
             </div>
             <div className='benefitDescr'>
                 {props.pBenefit}
