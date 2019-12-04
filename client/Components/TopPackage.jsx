@@ -8,19 +8,23 @@ const TopPackage = (props) => {
 
         <div className='topPackage'>
             {props.pNew === 1 ? (<p className='newBox'>New</p>) : (<span hidden/>)}
+            {props.pIkeaFamilySale === 1 ? (<p className='familyLabel'>IKEA Family Sale</p>) : (<span hidden/>)}
             <h1 className='productHeading'>{props.pName}</h1>
             <div className='productDescr'>{props.pDescr}</div>
-            <div className='productHeading'>{props.pOnSale === 1 ? <span className='salePrice'>{`$${props.pPrice}`}</span> : `$${props.pPrice}`}</div>
+            <div className='productPrice'>{props.pOnSale === 1 ? <span className='salePrice'>{`$${props.pPrice}`}</span> : `$${props.pPrice}`}</div>
+            {props.pIkeaFamilySale === 1 ? (<p className='dealLenTag'>{props.pDealLen}</p>) : (<span hidden/>)}
+            {props.pIkeaFamilySale === 1 ? (<p className='regPriceTag'>{props.pRegPrice}</p>) : (<span hidden/>)}
             <div className='productDescr'>
               <span className='starContainer'>
                   <span className='starColor'/>
                   <span className='star'/>
               </span>
-              <span className='productDescr'>{props.pReviewAvg < 0.1 ? '' : `${props.pReviewAvg}`}</span>
-              <span className='productDescr'>{props.pReviewCounter !== 1 ? `${props.pReviewCounter} Reviews` :  `${props.pReviewCounter} Review`}</span>
+              <span className='productDescrAvg'>{props.pReviewAvg < 0.1 ? '' : `${props.pReviewAvg}`}</span>
+                <span className='productDescr'>{props.pReviewCounter !== 1 ? <a className='reviewPullDown'>{props.pReviewCounter} Reviews</a> :  <a className='reviewPullDown'>{props.pReviewCounter} Review}</a>}</span>
             </div>
+            {props.pSoldSeparateMessage !== null ? (<div className='warningDiv'><span className='warningLogo logoProps'/><ul className='warningUl'><li className='warningli'>{props.pSoldSeparateMessage}</li></ul></div>) : (<span hidden/>)}
             <div className='benefitDescr'>
-                {props.pBenefit !== null ? <span>{props.pBenefit} <a className='readMore'> Read More </a></span> : ''}
+                {props.pBenefit !== null ? (<span>{props.pBenefit} <a className='readMore'> Read More </a></span>) : ''}
             </div>
         </div>
 
