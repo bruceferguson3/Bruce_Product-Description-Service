@@ -37,6 +37,7 @@ class App extends React.Component {
         this.decQuantityCount = this.decQuantityCount.bind(this);
         this.displayModal = this.displayModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.onHoverColorChange = this.onHoverColorChange.bind(this)
     }
 
     incQuantityCount() {
@@ -57,6 +58,10 @@ class App extends React.Component {
     closeModal() {
         console.log('CLOSING MODEL');
         document.getElementById('myModal').style.display = 'none'
+    }
+
+    onHoverColorChange(e) {
+        e.target.style.backgroundColor = 'lightgrey'
     }
 
     componentDidMount() {
@@ -111,7 +116,8 @@ class App extends React.Component {
                             pNew={this.state.productNew}
                             pSoldSeparateMessage={this.state.productSoldSeparateMessage}
                             displayModal={this.displayModal}
-                            closeModal={this.closeModal}/>
+                            closeModal={this.closeModal}
+                            onHoverChangeColor={this.onHoverColorChange}/>
 
                 <MiddlePackage pQuantity={this.state.productQuantity}
                                qInc={this.incQuantityCount}

@@ -46,7 +46,7 @@ const TopPackage = (props) => {
                    </div>)
                 : null}
             {props.pBenefit !== null
-                ? (<div className='benefitDescr'><span>{props.pBenefit} <a className='readMore'> Read More </a></span></div>)
+                ? (<div className='benefitDescr'><span>{props.pBenefit} <a className='readMore'>Read More</a></span></div>)
                 : null}
 
             <div id="myModal" className="modal">
@@ -54,6 +54,9 @@ const TopPackage = (props) => {
                 <div className="modal-content">
                     <span className="close" onClick={props.closeModal}>X</span>
                     <p className='centerText'>Choose Color</p>
+                    <div className='optHolder'>{colorOptArr.map((option, key) => {
+                        return (<div key={key} className='outerAtag '><img className='optImage' src={'https://www.ikea.com/us/en/images/products/kvalfjord-bed-frame__0670606_PE715558_S5.JPG?f=xxxs'} /><span className='innerOpt'>{option}</span></div>)
+                    })}</div>
                 </div>
 
             </div>
