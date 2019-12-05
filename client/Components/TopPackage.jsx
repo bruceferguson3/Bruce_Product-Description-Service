@@ -52,8 +52,8 @@ const TopPackage = (props) => {
             <div id="myModal" className="modal">
 
                 <div className="modal-content">
-                    <span className="close">Close</span>
-                    <p>Some text in the Modal..</p>
+                    <span className="close" onClick={props.closeModal}>X</span>
+                    <p className='centerText'>Choose Color</p>
                 </div>
 
             </div>

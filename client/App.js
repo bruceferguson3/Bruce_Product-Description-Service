@@ -36,6 +36,7 @@ class App extends React.Component {
         this.incQuantityCount = this.incQuantityCount.bind(this);
         this.decQuantityCount = this.decQuantityCount.bind(this);
         this.displayModal = this.displayModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     incQuantityCount() {
@@ -49,7 +50,13 @@ class App extends React.Component {
     }
 
     displayModal() {
-        console.log('DISPLAYING MODEL')
+        console.log('DISPLAYING MODEL');
+        document.getElementById('myModal').style.display = 'flex'
+    }
+
+    closeModal() {
+        console.log('CLOSING MODEL');
+        document.getElementById('myModal').style.display = 'none'
     }
 
     componentDidMount() {
@@ -103,7 +110,8 @@ class App extends React.Component {
                             pOnSale={this.state.productOnSale}
                             pNew={this.state.productNew}
                             pSoldSeparateMessage={this.state.productSoldSeparateMessage}
-                            displayModal={this.displayModal} />
+                            displayModal={this.displayModal}
+                            closeModal={this.closeModal}/>
 
                 <MiddlePackage pQuantity={this.state.productQuantity}
                                qInc={this.incQuantityCount}
