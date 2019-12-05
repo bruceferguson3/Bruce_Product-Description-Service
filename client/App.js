@@ -35,6 +35,7 @@ class App extends React.Component {
 
         this.incQuantityCount = this.incQuantityCount.bind(this);
         this.decQuantityCount = this.decQuantityCount.bind(this);
+        this.displayModal = this.displayModal.bind(this);
     }
 
     incQuantityCount() {
@@ -47,16 +48,20 @@ class App extends React.Component {
         this.setState({productQuantity: productQuant-1})
     }
 
+    displayModal() {
+        console.log('DISPLAYING MODEL')
+    }
+
     componentDidMount() {
         axios.get('/displayProduct')
             .then((productInfo) => {
                 this.setState({productId: productInfo.data[0].id,
                                      productName: productInfo.data[0].name,
                                      productDescr: productInfo.data[0].miniDescription,
-                                     productPrice: productInfo.data[0].price,
+                                     productPrice: productInfo.data[0].price.toFixed(2),
                                      productDealLen: productInfo.data[0].dealLen,
                                      productRegPrice: productInfo.data[0].regPrice,
-                                     productReviewAvg: productInfo.data[0].reviewAvg,
+                                     productReviewAvg: productInfo.data[0].reviewAvg.toFixed(1),
                                      productReviewCounter: productInfo.data[0].reviewCount,
                                      productBenefit: productInfo.data[0].benefit,
                                      productSizeOpt: productInfo.data[0].size,
@@ -89,13 +94,16 @@ class App extends React.Component {
                             pReviewAvg={this.state.productReviewAvg}
                             pReviewCounter={this.state.productReviewCounter}
                             pBenefit={this.state.productBenefit}
+                            pSizeOpt={this.state.productSizeOpt}
+                            pColorOpt={this.state.productColorOpt}
                             pMattressOpt={this.state.productMattressOpt}
                             pLegsOpt={this.state.productLegsOpt}
                             pSlattedBedBaseOpt={this.state.productSlattedBedBaseOpt}
                             pIkeaFamilySale={this.state.productIkeaFamilySale}
                             pOnSale={this.state.productOnSale}
                             pNew={this.state.productNew}
-                            pSoldSeparateMessage={this.state.productSoldSeparateMessage} />
+                            pSoldSeparateMessage={this.state.productSoldSeparateMessage}
+                            displayModal={this.displayModal} />
 
                 <MiddlePackage pQuantity={this.state.productQuantity}
                                qInc={this.incQuantityCount}
