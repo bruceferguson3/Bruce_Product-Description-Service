@@ -1,8 +1,9 @@
 const mysql = require('mysql');
 const password = require('./password.js');
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
+    host: 'product-database.cdrcwxiifuzp.us-east-2.rds.amazonaws.com',
+    port: 3306,
+    user: 'admin',
     password: password,
     database: 'Products'
 });
