@@ -9,7 +9,7 @@ const LastPackage = (props) => {
             {props.pAvaliableForDelivery === 1
                 ? (<div className='b_deliveryBox'>
                     <div className='b_deliveryHeader'>
-                        <button aria-expanded='false' className='b_deliveryButton' >
+                        <button aria-expanded='false' className='b_deliveryButton' onClick={props.displayDeliveryDrawer}>
                             <div className='b_deliveryItems'>
                                 <span className='b_deliveryLogos'>
                                     <svg className='b_deliveryTruckLogo'>
@@ -24,7 +24,7 @@ const LastPackage = (props) => {
                             </div>
                         </button>
                     </div>
-                    <div className='b_deliveryHiddenDiv' aria-hidden='true'>Add to cart for delivery details.</div>
+                    <div id='b_deliveryHiddenDiv' aria-hidden='true'>Add to cart for delivery details.</div>
                 </div>)
                 : null}
 

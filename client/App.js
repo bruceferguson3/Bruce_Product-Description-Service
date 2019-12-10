@@ -39,6 +39,7 @@ class App extends React.Component {
         this.displayModal = this.displayModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.recordShoppingCartVal = this.recordShoppingCartVal.bind(this);
+        this.displayDeliveryDrawer = this.displayDeliveryDrawer.bind(this);
         this.onHoverColorChange = this.onHoverColorChange.bind(this)
     }
 
@@ -60,6 +61,14 @@ class App extends React.Component {
     closeModal(id) {
         //console.log('CLOSING MODEL');
         document.getElementById(id).style.display = 'none'
+    }
+
+    displayDeliveryDrawer() {
+        if (document.getElementById('b_deliveryHiddenDiv').style.display === 'none') {
+            document.getElementById('b_deliveryHiddenDiv').style.display = 'flex'
+        } else {
+            document.getElementById('b_deliveryHiddenDiv').style.display = 'none'
+        }
     }
 
     recordShoppingCartVal() {
@@ -134,7 +143,8 @@ class App extends React.Component {
                                recordShoppingCartVal={this.recordShoppingCartVal}/>
 
                 <LastPackage pAvaliableForDelivery={this.state.productAvaliableForDelivery}
-                             pAssembly={this.state.productAssembly} />
+                             pAssembly={this.state.productAssembly}
+                             displayDeliveryDrawer={this.displayDeliveryDrawer}/>
 
             </div>
 
