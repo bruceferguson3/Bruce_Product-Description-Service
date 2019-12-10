@@ -17,7 +17,7 @@ app.get('/displayProduct', (req, res) => {
         } else {
             res.send(results);
         }
-    }, 27)
+    }, 23)
 });
 
 

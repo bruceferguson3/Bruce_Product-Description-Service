@@ -30,13 +30,15 @@ class App extends React.Component {
             productAvaliableForDelivery: 0,
             productAssembly: 0,
             productSoldSeparateMessage: '',
-            productQuantity: 1
+            productQuantity: 1,
+            shoppingCartVal: 0
         };
 
         this.incQuantityCount = this.incQuantityCount.bind(this);
         this.decQuantityCount = this.decQuantityCount.bind(this);
         this.displayModal = this.displayModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.recordShoppingCartVal = this.recordShoppingCartVal.bind(this);
         this.onHoverColorChange = this.onHoverColorChange.bind(this)
     }
 
@@ -50,14 +52,20 @@ class App extends React.Component {
         this.setState({productQuantity: productQuant-1})
     }
 
-    displayModal() {
-        console.log('DISPLAYING MODEL');
-        document.getElementById('myModal').style.display = 'flex'
+    displayModal(id) {
+        //console.log('DISPLAYING MODEL');
+        document.getElementById(id).style.display = 'flex'
     }
 
-    closeModal() {
-        console.log('CLOSING MODEL');
-        document.getElementById('myModal').style.display = 'none'
+    closeModal(id) {
+        //console.log('CLOSING MODEL');
+        document.getElementById(id).style.display = 'none'
+    }
+
+    recordShoppingCartVal() {
+       //console.log(Number(document.getElementById('Quantity').innerText));
+       let numToAdd = Number(document.getElementById('Quantity').innerText);
+       this.setState({shoppingCartVal: this.state.shoppingCartVal + numToAdd});
     }
 
     onHoverColorChange(e) {
@@ -122,10 +130,12 @@ class App extends React.Component {
                 <MiddlePackage pQuantity={this.state.productQuantity}
                                qInc={this.incQuantityCount}
                                qDec={this.decQuantityCount}
-                               pNotQuitePerfectBox={this.state.productNotQuitePerfectBox}/>
+                               pNotQuitePerfectBox={this.state.productNotQuitePerfectBox}
+                               recordShoppingCartVal={this.recordShoppingCartVal}/>
 
                 <LastPackage pAvaliableForDelivery={this.state.productAvaliableForDelivery}
                              pAssembly={this.state.productAssembly} />
+
             </div>
 
         )
