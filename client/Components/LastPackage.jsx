@@ -6,16 +6,27 @@ const LastPackage = (props) => {
     return (
 
         <div className='b_lastPackage'>
-            <div className='b_deliveryBox'>{props.pAvaliableForDelivery === 1
-                ? (<div>
-
-                    <button>
-                        Avaliable for delivery
-                    </button>
-
-                   </div>)
+            {props.pAvaliableForDelivery === 1
+                ? (<div className='b_deliveryBox'>
+                    <div className='b_deliveryHeader'>
+                        <button aria-expanded='false' className='b_deliveryButton' >
+                            <div className='b_deliveryItems'>
+                                <span className='b_deliveryLogos'>
+                                    <svg className='b_deliveryTruckLogo'>
+                                        <path d="M20,12,17,9H14V7H2V17H4a2,2,0,0,0,4,0h8a2,2,0,0,0,4,0h2V12.82ZM8,16H7.72A2,2,0,0,0,5,15.26a2,2,0,0,0-.74.74H3V8H13v8Zm13,0H19.72a2,2,0,0,0-2.7-.74,2,2,0,0,0-.74.74H14V10h2.59l2.7,2.71.15.14.18.08,1.38.56Z" />
+                                    </svg>
+                                    <img className='b_deliveryGreenDot' src='https://www.ikea.com/us/en/resources/svg/product-availability/stock-high-thin-24.50443bcac2b4be21.svg'/>
+                                </span>
+                                Avaliable for delivery
+                                <svg className='b_deliveryArrow'>
+                                    <path d="M19.71,9.29,18.29,7.88,12,14.17,5.7,7.88,4.29,9.3,12,17Z" />
+                                </svg>
+                            </div>
+                        </button>
+                    </div>
+                    <div className='b_deliveryHiddenDiv' aria-hidden='true'>Add to cart for delivery details.</div>
+                </div>)
                 : null}
-            </div>
 
             <div className='b_findStoreBox'>
                 <div className='b_findStoreHeader'>
