@@ -5,8 +5,8 @@ const LastPackage = (props) => {
 
     return (
 
-        <div className='lastPackage'>
-            <div className='deliveryBox'>{props.pAvaliableForDelivery === 1
+        <div className='b_lastPackage'>
+            <div className='b_deliveryBox'>{props.pAvaliableForDelivery === 1
                 ? (<div>
 
                     <button>
@@ -16,7 +16,24 @@ const LastPackage = (props) => {
                    </div>)
                 : null}
             </div>
-            <div className='findStoreBox'><span>Check at your local store</span></div>
+
+            <div className='b_findStoreBox'>
+                <div className='b_findStoreHeader'>
+                    <div className='b_findStoreItems'>
+                        <span className='b_findStoreLogos'>
+                            <svg className='b_findStoreHouseLogo'>
+                                <path d='M2,6V19H21V6Zm9,12H7V13h4Zm5,0H12V13h4Zm1,0V12H6v6H3V7H20V18Z'/>
+                            </svg>
+                            <svg className='b_findStoreAlertIcon'>
+                                <path d='M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z' fill='#0058A3'/>
+                                <path d='M9 12H7V7h2v5zM7 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0z' fill='white'/>
+                            </svg>
+                        </span>
+                        <a className='b_Links'>Check at your local store</a>
+                    </div>
+                </div>
+            </div>
+
             <div className='b_assemblyBox'>
                 {props.pAssembly === 1
                     ? (<div className='b_assemblyHeader'>
@@ -28,7 +45,7 @@ const LastPackage = (props) => {
                                      <path d='M9 12H7V7h2v5zM7 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0z' fill='white'/>
                                  </svg>
                              </span>
-                             Assembly
+                             <a className='b_Links'>Assembly</a>
                          </div>
                        </div>)
                     : null}
