@@ -7,7 +7,11 @@ const db = require('./db.js');
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+
+app.use('/', express.static('public'));
+
+app.use('/bundle', express.static('public/bundle.js'));
+app.use('/styleSheet', express.static('public/style.css'));
 
 app.get('/displayProduct', (req, res) => {
     db.selectOneProduct((err, results) => {

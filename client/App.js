@@ -15,8 +15,8 @@ class App extends React.Component {
             productPrice: '',
             productDealLen: '',
             productRegPrice: '',
-            productReviewAvg: '',
-            productReviewCounter: '',
+            productReviewAvg: 0,
+            productReviewCounter: 0,
             productBenefit: '',
             productSizeOpt: '',
             productColorOpt: '',
@@ -40,7 +40,8 @@ class App extends React.Component {
         this.closeModal = this.closeModal.bind(this);
         this.recordShoppingCartVal = this.recordShoppingCartVal.bind(this);
         this.displayDeliveryDrawer = this.displayDeliveryDrawer.bind(this);
-        this.onHoverColorChange = this.onHoverColorChange.bind(this)
+        this.onHoverColorChange = this.onHoverColorChange.bind(this);
+        this.changeWidthOnStars = this.changeWidthOnStars.bind(this);
     }
 
     incQuantityCount() {
@@ -73,7 +74,7 @@ class App extends React.Component {
 
     recordShoppingCartVal() {
        //console.log(Number(document.getElementById('Quantity').innerText));
-       let numToAdd = Number(document.getElementById('Quantity').innerText);
+       let numToAdd = Number(document.getElementById('b_Quantity').innerText);
        this.setState({shoppingCartVal: this.state.shoppingCartVal + numToAdd});
     }
 
@@ -81,8 +82,14 @@ class App extends React.Component {
         e.target.style.backgroundColor = 'lightgrey'
     }
 
+    changeWidthOnStars() {
+        let newSizePercent = this.state.productReviewAvg * 20;
+        console.log(newSizePercent);
+        document.getElementById('b_starColorID').style.width = `${newSizePercent}%`
+    }
+
     componentDidMount() {
-        axios.get('/displayProduct')
+        axios.get('/displayProduct', { baseURL: 'http://ikeaproducts.us-east-2.elasticbeanstalk.com'})
             .then((productInfo) => {
                 this.setState({productId: productInfo.data[0].id,
                                      productName: productInfo.data[0].name,
@@ -104,17 +111,20 @@ class App extends React.Component {
                                      productNotQuitePerfectBox: productInfo.data[0].notQuitePerfect,
                                      productAvaliableForDelivery: productInfo.data[0].avaliableForDelivery,
                                      productAssembly: productInfo.data[0].assembly,
-                                     productSoldSeparateMessage: productInfo.data[0].soldSeparate})
+                                     productSoldSeparateMessage: productInfo.data[0].soldSeparate}, () => {
+                                     this.changeWidthOnStars()
+                })
             })
             .catch((err) => {
                 console.log(err)
             })
+
     }
 
 
     render() {
         return (
-            <div className='mainContainer'>
+            <div className='b_mainContainer'>
                 <TopPackage pName={this.state.productName}
                             pDescr={this.state.productDescr}
                             pPrice={this.state.productPrice}
