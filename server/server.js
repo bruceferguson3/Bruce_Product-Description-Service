@@ -13,7 +13,8 @@ app.use('/', express.static('public'));
 app.use('/bundle', express.static('public/bundle.js'));
 app.use('/styleSheet', express.static('public/style.css'));
 
-app.get('/displayProduct', (req, res) => {
+app.get('/displayProduct/:id', (req, res) => {
+    let id = req.params.id;
     db.selectOneProduct((err, results) => {
         if (err) {
             console.log(err);
@@ -21,7 +22,7 @@ app.get('/displayProduct', (req, res) => {
         } else {
             res.send(results);
         }
-    }, 23)
+    }, id)
 });
 
 

@@ -59,7 +59,7 @@ const TopPackage = (props) => {
                   : `${props.pReviewAvg}`}</span>
                 <span className='b_productMiniDescr'>{props.pReviewCounter !== 1
                     ? <a className='b_reviewPullDown'>{props.pReviewCounter} Reviews</a>
-                    :  <a className='b_reviewPullDown'>{props.pReviewCounter} Review}</a>}</span>
+                    :  <a className='b_reviewPullDown'>{props.pReviewCounter} Review</a>}</span>
             </div>
             {props.pSoldSeparateMessage !== null
                 ? (<div className='b_warningDiv'><span className='b_warningLogo b_logoProps'/><ul className='b_warningUl'><li className='b_warningli'>{props.pSoldSeparateMessage}</li></ul></div>)
@@ -103,7 +103,7 @@ const TopPackage = (props) => {
                     <span className="b_close" onClick={() => props.closeModal('b_myModalColor')}>X</span>
                     <p className='b_centerText'>Choose Color</p>
                     <div className='b_optHolder'>{colorOptArr.map((option, key) => {
-                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={'https://www.ikea.com/us/en/images/products/kvalfjord-bed-frame__0670606_PE715558_S5.JPG?f=xxxs'} /><span className='b_innerOpt'>{option}</span></div>)
+                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
                     })}</div>
                 </div>
             </div>) : null}
@@ -113,7 +113,7 @@ const TopPackage = (props) => {
                     <span className="b_close" onClick={() => props.closeModal('b_myModalSize')}>X</span>
                     <p className='b_centerText'>Choose Size</p>
                     <div className='b_optHolder'>{sizeOptArr.map((option, key) => {
-                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={'https://www.ikea.com/us/en/images/products/kvalfjord-bed-frame__0670606_PE715558_S5.JPG?f=xxxs'} /><span className='b_innerOpt'>{option}</span></div>)
+                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
                     })}</div>
                 </div>
             </div>) : null}
@@ -123,7 +123,7 @@ const TopPackage = (props) => {
                     <span className="b_close" onClick={() => props.closeModal('b_myModalMattress')}>X</span>
                     <p className='b_centerText'>Choose Mattress</p>
                     <div className='b_optHolder'>{mattressOptArr.map((option, key) => {
-                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={'https://www.ikea.com/us/en/images/products/kvalfjord-bed-frame__0670606_PE715558_S5.JPG?f=xxxs'} /><span className='b_innerOpt'>{option}</span></div>)
+                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
                     })}</div>
                 </div>
             </div>) : null}
@@ -133,7 +133,7 @@ const TopPackage = (props) => {
                     <span className="b_close" onClick={() => props.closeModal('b_myModalLegs')}>X</span>
                     <p className='b_centerText'>Choose Legs</p>
                     <div className='b_optHolder'>{legsOptArr.map((option, key) => {
-                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={'https://www.ikea.com/us/en/images/products/kvalfjord-bed-frame__0670606_PE715558_S5.JPG?f=xxxs'} /><span className='b_innerOpt'>{option}</span></div>)
+                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
                     })}</div>
                 </div>
             </div>) : null}
@@ -143,7 +143,7 @@ const TopPackage = (props) => {
                     <span className="b_close" onClick={() => props.closeModal('b_myModalSlattedBedBase')}>X</span>
                     <p className='b_centerText'>Choose Base</p>
                     <div className='b_optHolder'>{slattedBedBaseOptArr.map((option, key) => {
-                        return (<div key={key} className='b_outerAtag'><img className='b_optImage' src={'https://www.ikea.com/us/en/images/products/kvalfjord-bed-frame__0670606_PE715558_S5.JPG?f=xxxs'} /><span className='b_innerOpt'>{option}</span></div>)
+                        return (<div key={key} className='b_outerAtag'><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
                     })}</div>
                 </div>
             </div>) : null}

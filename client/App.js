@@ -42,6 +42,7 @@ class App extends React.Component {
         this.displayDeliveryDrawer = this.displayDeliveryDrawer.bind(this);
         this.onHoverColorChange = this.onHoverColorChange.bind(this);
         this.changeWidthOnStars = this.changeWidthOnStars.bind(this);
+        this.updatePage = this.updatePage.bind(this);
     }
 
     incQuantityCount() {
@@ -88,44 +89,55 @@ class App extends React.Component {
         document.getElementById('b_starColorID').style.width = `${newSizePercent}%`
     }
 
-    componentDidMount() {
-        axios.get('/displayProduct', { baseURL: 'http://ikeaproducts.us-east-2.elasticbeanstalk.com'})
+    updatePage(id) {
+        axios.get(`/displayProduct/${id}`, { baseURL: 'http://ikeaproducts.us-east-2.elasticbeanstalk.com'})
             .then((productInfo) => {
                 this.setState({productId: productInfo.data[0].id,
-                                     productName: productInfo.data[0].name,
-                                     productDescr: productInfo.data[0].miniDescription,
-                                     productPrice: productInfo.data[0].price.toFixed(2),
-                                     productDealLen: productInfo.data[0].dealLen,
-                                     productRegPrice: productInfo.data[0].regPrice,
-                                     productReviewAvg: productInfo.data[0].reviewAvg.toFixed(1),
-                                     productReviewCounter: productInfo.data[0].reviewCount,
-                                     productBenefit: productInfo.data[0].benefit,
-                                     productSizeOpt: productInfo.data[0].size,
-                                     productColorOpt: productInfo.data[0].color,
-                                     productMattressOpt: productInfo.data[0].mattress,
-                                     productLegsOpt: productInfo.data[0].legs,
-                                     productSlattedBedBaseOpt: productInfo.data[0].slattedBedBase,
-                                     productIkeaFamilySale: productInfo.data[0].ikeaFamilySale,
-                                     productOnSale: productInfo.data[0].onSale,
-                                     productNew: productInfo.data[0].new,
-                                     productNotQuitePerfectBox: productInfo.data[0].notQuitePerfect,
-                                     productAvaliableForDelivery: productInfo.data[0].avaliableForDelivery,
-                                     productAssembly: productInfo.data[0].assembly,
-                                     productSoldSeparateMessage: productInfo.data[0].soldSeparate}, () => {
-                                     this.changeWidthOnStars()
+                    productName: productInfo.data[0].name,
+                    productDescr: productInfo.data[0].miniDescription,
+                    productPrice: productInfo.data[0].price.toFixed(2),
+                    productDealLen: productInfo.data[0].dealLen,
+                    productRegPrice: productInfo.data[0].regPrice,
+                    productReviewAvg: productInfo.data[0].reviewAvg.toFixed(1),
+                    productReviewCounter: productInfo.data[0].reviewCount,
+                    productBenefit: productInfo.data[0].benefit,
+                    productSizeOpt: productInfo.data[0].size,
+                    productColorOpt: productInfo.data[0].color,
+                    productMattressOpt: productInfo.data[0].mattress,
+                    productLegsOpt: productInfo.data[0].legs,
+                    productSlattedBedBaseOpt: productInfo.data[0].slattedBedBase,
+                    productIkeaFamilySale: productInfo.data[0].ikeaFamilySale,
+                    productOnSale: productInfo.data[0].onSale,
+                    productNew: productInfo.data[0].new,
+                    productNotQuitePerfectBox: productInfo.data[0].notQuitePerfect,
+                    productAvaliableForDelivery: productInfo.data[0].avaliableForDelivery,
+                    productAssembly: productInfo.data[0].assembly,
+                    productSoldSeparateMessage: productInfo.data[0].soldSeparate}, () => {
+                    this.changeWidthOnStars();
                 })
             })
             .catch((err) => {
                 console.log(err)
             })
+    }
 
+    componentDidMount() {
+        this.updatePage(3);
+        window.addEventListener('productChanged', (event) => {
+            this.setState({
+                productId: event.detail.productId,
+            }, () => {
+                this.updatePage(this.state.productId)
+            });
+        });
     }
 
 
     render() {
         return (
             <div className='b_mainContainer'>
-                <TopPackage pName={this.state.productName}
+                <TopPackage pId={this.state.productId}
+                            pName={this.state.productName}
                             pDescr={this.state.productDescr}
                             pPrice={this.state.productPrice}
                             pDealLen={this.state.productDealLen}
