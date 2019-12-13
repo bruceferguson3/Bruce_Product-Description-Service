@@ -10,8 +10,8 @@ const connection = mysql.createConnection({
 
 connection.connect(() => console.log('Connected to Database!'));
 
-let selectAllProducts = (callback) => {
-    connection.query('SELECT * FROM Products.info', (err, results) => {
+let updateOneProduct = (callback, id, newAvg, newTotal) => {
+    connection.query(`UPDATE Products.info SET reviewAvg=${newAvg}, reviewCount=${newTotal} WHERE id = ${id}`, (err, results) => {
         if (err) {
             callback(err, null)
         } else {
@@ -30,5 +30,5 @@ let selectOneProduct = (callback, id) => {
     })
 };
 
-module.exports = {selectOneProduct, selectAllProducts};
+module.exports = {selectOneProduct, updateOneProduct};
 

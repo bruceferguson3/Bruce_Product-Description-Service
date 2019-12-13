@@ -43,6 +43,7 @@ class App extends React.Component {
         this.onHoverColorChange = this.onHoverColorChange.bind(this);
         this.changeWidthOnStars = this.changeWidthOnStars.bind(this);
         this.updatePage = this.updatePage.bind(this);
+        this.scrollToReviewDrawer = this.scrollToReviewDrawer.bind(this);
     }
 
     incQuantityCount() {
@@ -67,7 +68,7 @@ class App extends React.Component {
 
     displayDeliveryDrawer() {
         if (document.getElementById('b_deliveryHiddenDiv').style.display === 'none') {
-            document.getElementById('b_deliveryHiddenDiv').style.display = 'flex'
+            document.getElementById('b_deliveryHiddenDiv').style.display = 'flex';
         } else {
             document.getElementById('b_deliveryHiddenDiv').style.display = 'none'
         }
@@ -88,6 +89,34 @@ class App extends React.Component {
         console.log(newSizePercent);
         document.getElementById('b_starColorID').style.width = `${newSizePercent}%`
     }
+
+    scrollToReviewDrawer() {
+        console.log(window.scrollY);
+        document.body.scrollTop = 1350
+    }
+
+    newReview(newReviewRating) {
+        let productCounter = this.state.productReviewCounter;
+        let totalReviewRating = this.state.productReviewAvg * this.state.productReviewCounter;
+        console.log(totalReviewRating);
+        this.setState({productReviewCounter: productCounter + 1}, () => {
+            let newReviewRatingTotal = totalReviewRating + newReviewRating.newRating;
+            console.log(newReviewRatingTotal);
+            let newReviewAvg = (newReviewRatingTotal / this.state.productReviewCounter).toFixed(1);
+            this.setState({productReviewAvg: newReviewAvg}, () => {
+                axios.patch('/updateReviewInfo', { newReviewCount: this.state.productReviewCounter, newReviewAvg: this.state.productReviewAvg, productId: this.state.productId}, { baseURL: 'http://ikeaproducts.us-east-2.elasticbeanstalk.com'})
+                    .then((newReviewInfo) => {
+                        console.log('Heres the data!');
+                        console.log(newReviewInfo.data)
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                    })
+            })
+        });
+    }
+
+
 
     updatePage(id) {
         axios.get(`/displayProduct/${id}`, { baseURL: 'http://ikeaproducts.us-east-2.elasticbeanstalk.com'})
@@ -130,6 +159,9 @@ class App extends React.Component {
                 this.updatePage(this.state.productId)
             });
         });
+        window.addEventListener('newReview', (event) => {
+                this.newReview(event.detail)
+        });
     }
 
 
@@ -156,7 +188,8 @@ class App extends React.Component {
                             pSoldSeparateMessage={this.state.productSoldSeparateMessage}
                             displayModal={this.displayModal}
                             closeModal={this.closeModal}
-                            onHoverChangeColor={this.onHoverColorChange}/>
+                            onHoverChangeColor={this.onHoverColorChange}
+                            scrollToReviewDrawer={this.scrollToReviewDrawer}/>
 
                 <MiddlePackage pQuantity={this.state.productQuantity}
                                qInc={this.incQuantityCount}

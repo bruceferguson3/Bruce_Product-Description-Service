@@ -57,46 +57,46 @@ const TopPackage = (props) => {
               <span className='b_productDescrAvg'>{props.pReviewAvg < 0.1
                   ? ''
                   : `${props.pReviewAvg}`}</span>
-                <span className='b_productMiniDescr'>{props.pReviewCounter !== 1
-                    ? <a className='b_reviewPullDown'>{props.pReviewCounter} Reviews</a>
-                    :  <a className='b_reviewPullDown'>{props.pReviewCounter} Review</a>}</span>
+                <span onClick={() => props.scrollToReviewDrawer()} className='b_productMiniDescr'>{props.pReviewCounter !== 1
+                    ?  <a  className='b_reviewPullDown'>{props.pReviewCounter} Reviews</a>
+                    :  <a  className='b_reviewPullDown'>{props.pReviewCounter} Review</a>}
+                </span>
             </div>
             {props.pSoldSeparateMessage !== null
                 ? (<div className='b_warningDiv'><span className='b_warningLogo b_logoProps'/><ul className='b_warningUl'><li className='b_warningli'>{props.pSoldSeparateMessage}</li></ul></div>)
                 : null}
 
-            {colorOptArr !== null
-                ? (<div className='b_optionContainer'>The price reflects selected options.
-                    <div className='b_option'><span className='b_optionTitle'><span className='b_colorOptText'>Colors: </span><span className='b_optionText'>{colorOptArr[0]}</span></span><span className='b_openOptions' id='button' onClick={() => props.displayModal('b_myModalColor')}><svg className='b_optButton'><path d="M19.71,9.29,18.29,7.88,12,14.17,5.7,7.88,4.29,9.3,12,17Z"/></svg></span></div>
-                   </div>)
-                : null}
-            {sizeOptArr !== null
-                ? (<div className='b_optionContainer'>The price reflects selected options.
-                    <div className='b_option'><span className='b_optionTitle'><span className='b_colorOptText'>Size: </span><span className='b_optionText'>{sizeOptArr[0]}</span></span><span className='b_openOptions' id='button' onClick={() => props.displayModal('b_myModalSize')}><svg className='b_optButton'><path d="M19.71,9.29,18.29,7.88,12,14.17,5.7,7.88,4.29,9.3,12,17Z"/></svg></span></div>
-                </div>)
-                : null}
-
-            {mattressOptArr !== null
-                ? (<div className='b_optionContainer'>The price reflects selected options.
-                    <div className='b_option'><span className='b_optionTitle'><span className='b_colorOptText'>Mattress: </span><span className='b_optionText'>{mattressOptArr[0]}</span></span><span className='b_openOptions' id='button' onClick={() => props.displayModal('b_myModalMattress')}><svg className='b_optButton'><path d="M19.71,9.29,18.29,7.88,12,14.17,5.7,7.88,4.29,9.3,12,17Z"/></svg></span></div>
-                </div>)
-                : null}
-
-            {legsOptArr !== null
-                ? (<div className='b_optionContainer'>The price reflects selected options.
-                    <div className='b_option'><span className='b_optionTitle'><span className='b_colorOptText'>Legs: </span><span className='b_optionText'>{legsOptArr[0]}</span></span><span className='b_openOptions' id='button' onClick={() => props.displayModal('b_myModalLegs')}><svg className='b_optButton'><path d="M19.71,9.29,18.29,7.88,12,14.17,5.7,7.88,4.29,9.3,12,17Z"/></svg></span></div>
-                </div>)
-                : null}
-
-            {slattedBedBaseOptArr !== null
-                ? (<div className='b_optionContainer'>The price reflects selected options.
-                    <div className='b_option'><span className='b_optionTitle'><span className='b_colorOptText'>Slatted Bed Base: </span><span className='b_optionText'>{slattedBedBaseOptArr[0]}</span></span><span className='b_openOptions' id='button' onClick={() => props.displayModal('b_myModalSlattedBedBase')}><svg className='b_optButton'><path d="M19.71,9.29,18.29,7.88,12,14.17,5.7,7.88,4.29,9.3,12,17Z"/></svg></span></div>
-                </div>)
-                : null}
-
             {props.pBenefit !== null
                 ? (<div className='b_benefitDescr'><span>{props.pBenefit} <a className='b_readMore'>Read More</a></span></div>)
                 : null}
+
+            {colorOptArr !== null ||
+            sizeOptArr !== null ||
+            mattressOptArr !== null ||
+            legsOptArr !== null ||
+            slattedBedBaseOptArr !== null
+            ?
+            (<div className='b_optionContainer'>The price reflects selected options.
+                {colorOptArr !== null
+                    ? (<div className='b_option'><span className='b_optionTitle'><span className='b_colorOptText'>Colors: </span><span className='b_optionText'>{colorOptArr[0]}</span></span><span className='b_openOptions' id='button' onClick={() => props.displayModal('b_myModalColor')}><svg className='b_optButton'><path d="M19.71,9.29,18.29,7.88,12,14.17,5.7,7.88,4.29,9.3,12,17Z"/></svg></span></div>)
+                    : null}
+                {sizeOptArr !== null
+                    ? (<div className='b_option'><span className='b_optionTitle'><span className='b_colorOptText'>Size: </span><span className='b_optionText'>{sizeOptArr[0]}</span></span><span className='b_openOptions' id='button' onClick={() => props.displayModal('b_myModalSize')}><svg className='b_optButton'><path d="M19.71,9.29,18.29,7.88,12,14.17,5.7,7.88,4.29,9.3,12,17Z"/></svg></span></div>)
+                    : null}
+
+                {mattressOptArr !== null
+                    ? (<div className='b_option'><span className='b_optionTitle'><span className='b_colorOptText'>Mattress: </span><span className='b_optionText'>{mattressOptArr[0]}</span></span><span className='b_openOptions' id='button' onClick={() => props.displayModal('b_myModalMattress')}><svg className='b_optButton'><path d="M19.71,9.29,18.29,7.88,12,14.17,5.7,7.88,4.29,9.3,12,17Z"/></svg></span></div>)
+                    : null}
+
+                {legsOptArr !== null
+                    ? (<div className='b_option'><span className='b_optionTitle'><span className='b_colorOptText'>Legs: </span><span className='b_optionText'>{legsOptArr[0]}</span></span><span className='b_openOptions' id='button' onClick={() => props.displayModal('b_myModalLegs')}><svg className='b_optButton'><path d="M19.71,9.29,18.29,7.88,12,14.17,5.7,7.88,4.29,9.3,12,17Z"/></svg></span></div>)
+                    : null}
+
+                {slattedBedBaseOptArr !== null
+                    ? (<div className='b_option'><span className='b_optionTitle'><span className='b_colorOptText'>Slatted Bed Base: </span><span className='b_optionText'>{slattedBedBaseOptArr[0]}</span></span><span className='b_openOptions' id='button' onClick={() => props.displayModal('b_myModalSlattedBedBase')}><svg className='b_optButton'><path d="M19.71,9.29,18.29,7.88,12,14.17,5.7,7.88,4.29,9.3,12,17Z"/></svg></span></div>)
+                    : null}
+            </div>)
+            : null}
 
             {colorOptArr !== null ? (<div id="b_myModalColor" className="b_modal">
                 <div className="b_modal-content">
