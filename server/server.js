@@ -29,9 +29,6 @@ app.patch('/updateReviewInfo', (req, res) => {
     let id = req.body.productId;
     let newAvg = req.body.newReviewAvg;
     let newTotal = req.body.newReviewCount;
-    console.log(id);
-    console.log(newAvg);
-    console.log(newTotal);
     db.updateOneProduct((err, results) => {
         if (err) {
             console.log(err);

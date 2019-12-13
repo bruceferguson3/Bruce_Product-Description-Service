@@ -86,12 +86,10 @@ class App extends React.Component {
 
     changeWidthOnStars() {
         let newSizePercent = this.state.productReviewAvg * 20;
-        console.log(newSizePercent);
         document.getElementById('b_starColorID').style.width = `${newSizePercent}%`
     }
 
     scrollToReviewDrawer() {
-        console.log(window.scrollY);
         document.body.scrollTop = 1350
     }
 
