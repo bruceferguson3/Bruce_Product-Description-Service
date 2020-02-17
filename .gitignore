@@ -1,11 +1,18 @@
 ## MAC files ##
 .DS_Store
+password.js
 
 ## NPM ##
 npm
 npm-debug.log
 node_modules/
 
+/.idea
+/.vscode
+package-lock.json
+STYLE-GUIDE.md
+.nvmrc
+.eslintrc.js
 pids
 *.pid
 logs
