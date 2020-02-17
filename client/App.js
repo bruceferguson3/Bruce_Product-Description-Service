@@ -40,7 +40,7 @@ class App extends React.Component {
         this.closeModal = this.closeModal.bind(this);
         this.recordShoppingCartVal = this.recordShoppingCartVal.bind(this);
         this.displayDeliveryDrawer = this.displayDeliveryDrawer.bind(this);
-        this.onHoverColorChange = this.onHoverColorChange.bind(this);
+        // this.onHoverColorChange = this.onHoverColorChange.bind(this);
         this.changeWidthOnStars = this.changeWidthOnStars.bind(this);
         this.updatePage = this.updatePage.bind(this);
         this.scrollToReviewDrawer = this.scrollToReviewDrawer.bind(this);
@@ -77,12 +77,20 @@ class App extends React.Component {
     recordShoppingCartVal() {
        //console.log(Number(document.getElementById('Quantity').innerText));
        let numToAdd = Number(document.getElementById('b_Quantity').innerText);
-       this.setState({shoppingCartVal: this.state.shoppingCartVal + numToAdd});
+       this.setState({shoppingCartVal: this.state.shoppingCartVal + numToAdd}, () => {
+           window.dispatchEvent(
+               new CustomEvent('cartUpdated', {
+                   detail: {
+                       cartCount: this.state.shoppingCartVal
+                   }
+               })
+           )
+       });
     }
 
-    onHoverColorChange(e) {
-        e.target.style.backgroundColor = 'lightgrey'
-    }
+    // onHoverColorChange(e) {
+    //     e.target.style.backgroundColor = 'lightgrey'
+    // }
 
     changeWidthOnStars() {
         let newSizePercent = this.state.productReviewAvg * 20;
@@ -90,8 +98,10 @@ class App extends React.Component {
     }
 
     scrollToReviewDrawer() {
-        document.body.scrollTop = 1350
+        document.body.scrollTop = 1350;
+        document.documentElement.scrollTop = 1350;
     }
+
 
     newReview(newReviewRating) {
         let productCounter = this.state.productReviewCounter;
@@ -139,8 +149,10 @@ class App extends React.Component {
                     productNotQuitePerfectBox: productInfo.data[0].notQuitePerfect,
                     productAvaliableForDelivery: productInfo.data[0].avaliableForDelivery,
                     productAssembly: productInfo.data[0].assembly,
-                    productSoldSeparateMessage: productInfo.data[0].soldSeparate}, () => {
+                    productSoldSeparateMessage: productInfo.data[0].soldSeparate,
+                    productQuantity: 1}, () => {
                     this.changeWidthOnStars();
+
                 })
             })
             .catch((err) => {
@@ -166,38 +178,44 @@ class App extends React.Component {
     render() {
         return (
             <div className='b_mainContainer'>
-                <TopPackage pId={this.state.productId}
-                            pName={this.state.productName}
-                            pDescr={this.state.productDescr}
-                            pPrice={this.state.productPrice}
-                            pDealLen={this.state.productDealLen}
-                            pRegPrice={this.state.productRegPrice}
-                            pReviewAvg={this.state.productReviewAvg}
-                            pReviewCounter={this.state.productReviewCounter}
-                            pBenefit={this.state.productBenefit}
-                            pSizeOpt={this.state.productSizeOpt}
-                            pColorOpt={this.state.productColorOpt}
-                            pMattressOpt={this.state.productMattressOpt}
-                            pLegsOpt={this.state.productLegsOpt}
-                            pSlattedBedBaseOpt={this.state.productSlattedBedBaseOpt}
-                            pIkeaFamilySale={this.state.productIkeaFamilySale}
-                            pOnSale={this.state.productOnSale}
-                            pNew={this.state.productNew}
-                            pSoldSeparateMessage={this.state.productSoldSeparateMessage}
-                            displayModal={this.displayModal}
-                            closeModal={this.closeModal}
-                            onHoverChangeColor={this.onHoverColorChange}
-                            scrollToReviewDrawer={this.scrollToReviewDrawer}/>
+                <TopPackage
+                    pId={this.state.productId}
+                    pName={this.state.productName}
+                    pDescr={this.state.productDescr}
+                    pPrice={this.state.productPrice}
+                    pDealLen={this.state.productDealLen}
+                    pRegPrice={this.state.productRegPrice}
+                    pReviewAvg={this.state.productReviewAvg}
+                    pReviewCounter={this.state.productReviewCounter}
+                    pBenefit={this.state.productBenefit}
+                    pSizeOpt={this.state.productSizeOpt}
+                    pColorOpt={this.state.productColorOpt}
+                    pMattressOpt={this.state.productMattressOpt}
+                    pLegsOpt={this.state.productLegsOpt}
+                    pSlattedBedBaseOpt={this.state.productSlattedBedBaseOpt}
+                    pIkeaFamilySale={this.state.productIkeaFamilySale}
+                    pOnSale={this.state.productOnSale}
+                    pNew={this.state.productNew}
+                    pSoldSeparateMessage={this.state.productSoldSeparateMessage}
+                    displayModal={this.displayModal}
+                    closeModal={this.closeModal}
+                    onHoverChangeColor={this.onHoverColorChange}
+                    scrollToReviewDrawer={this.scrollToReviewDrawer}
+                />
 
-                <MiddlePackage pQuantity={this.state.productQuantity}
-                               qInc={this.incQuantityCount}
-                               qDec={this.decQuantityCount}
-                               pNotQuitePerfectBox={this.state.productNotQuitePerfectBox}
-                               recordShoppingCartVal={this.recordShoppingCartVal}/>
+                <MiddlePackage
+                    pQuantity={this.state.productQuantity}
+                    qInc={this.incQuantityCount}
+                    qDec={this.decQuantityCount}
+                    pNotQuitePerfectBox={this.state.productNotQuitePerfectBox}
+                    recordShoppingCartVal={this.recordShoppingCartVal}
+                />
 
-                <LastPackage pAvaliableForDelivery={this.state.productAvaliableForDelivery}
-                             pAssembly={this.state.productAssembly}
-                             displayDeliveryDrawer={this.displayDeliveryDrawer}/>
+                <LastPackage
+                    pAvaliableForDelivery={this.state.productAvaliableForDelivery}
+                    pAssembly={this.state.productAssembly}
+                    displayDeliveryDrawer={this.displayDeliveryDrawer}
+                />
 
             </div>
 

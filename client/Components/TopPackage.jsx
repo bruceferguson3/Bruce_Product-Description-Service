@@ -85,7 +85,17 @@ const TopPackage = (props) => {
                     : null}
 
                 {mattressOptArr !== null
-                    ? (<div className='b_option'><span className='b_optionTitle'><span className='b_colorOptText'>Mattress: </span><span className='b_optionText'>{mattressOptArr[0]}</span></span><span className='b_openOptions' id='button' onClick={() => props.displayModal('b_myModalMattress')}><svg className='b_optButton'><path d="M19.71,9.29,18.29,7.88,12,14.17,5.7,7.88,4.29,9.3,12,17Z"/></svg></span></div>)
+                    ? (<div className='b_option'>
+                        <span className='b_optionTitle'>
+                            <span className='b_colorOptText'>Mattress:</span>
+                            <span className='b_optionText'>{mattressOptArr[0]}</span>
+                        </span>
+                        <span className='b_openOptions' id='button' onClick={() => props.displayModal('b_myModalMattress')}>
+                            <svg className='b_optButton'>
+                                <path d="M19.71,9.29,18.29,7.88,12,14.17,5.7,7.88,4.29,9.3,12,17Z"/>
+                            </svg>
+                        </span>
+                    </div>)
                     : null}
 
                 {legsOptArr !== null
@@ -103,7 +113,7 @@ const TopPackage = (props) => {
                     <span className="b_close" onClick={() => props.closeModal('b_myModalColor')}>X</span>
                     <p className='b_centerText'>Choose Color</p>
                     <div className='b_optHolder'>{colorOptArr.map((option, key) => {
-                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
+                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId || 3}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
                     })}</div>
                 </div>
             </div>) : null}
@@ -113,7 +123,7 @@ const TopPackage = (props) => {
                     <span className="b_close" onClick={() => props.closeModal('b_myModalSize')}>X</span>
                     <p className='b_centerText'>Choose Size</p>
                     <div className='b_optHolder'>{sizeOptArr.map((option, key) => {
-                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
+                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId || 3}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
                     })}</div>
                 </div>
             </div>) : null}
@@ -123,7 +133,7 @@ const TopPackage = (props) => {
                     <span className="b_close" onClick={() => props.closeModal('b_myModalMattress')}>X</span>
                     <p className='b_centerText'>Choose Mattress</p>
                     <div className='b_optHolder'>{mattressOptArr.map((option, key) => {
-                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
+                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId || 3}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
                     })}</div>
                 </div>
             </div>) : null}
@@ -133,7 +143,7 @@ const TopPackage = (props) => {
                     <span className="b_close" onClick={() => props.closeModal('b_myModalLegs')}>X</span>
                     <p className='b_centerText'>Choose Legs</p>
                     <div className='b_optHolder'>{legsOptArr.map((option, key) => {
-                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
+                        return (<div key={key} className='b_outerAtag '><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId || 3}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
                     })}</div>
                 </div>
             </div>) : null}
@@ -143,7 +153,7 @@ const TopPackage = (props) => {
                     <span className="b_close" onClick={() => props.closeModal('b_myModalSlattedBedBase')}>X</span>
                     <p className='b_centerText'>Choose Base</p>
                     <div className='b_optHolder'>{slattedBedBaseOptArr.map((option, key) => {
-                        return (<div key={key} className='b_outerAtag'><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
+                        return (<div key={key} className='b_outerAtag'><img className='b_optImage' src={`https://mark-ikea-image-view.s3.us-east-2.amazonaws.com/${props.pId || 3}/Image-1.jpeg`} /><span className='b_innerOpt'>{option}</span></div>)
                     })}</div>
                 </div>
             </div>) : null}
