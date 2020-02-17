@@ -22,8 +22,8 @@ The "Check your local store" button will pull the page down to the
 
 ## Related Projects
 
-  - https://github.com/bruceferguson3/Bruce_Product-Description-Service
-  - https://github.com/bruceferguson3/Bruce_Proxy
+  - https://github.com/bruceferguson3/Product-Description-Service
+  - https://github.com/bruceferguson3/IKEA-Clone-Proxy
 
 ## Usage
 
