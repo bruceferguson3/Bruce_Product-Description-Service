@@ -1,4 +1,4 @@
-# Product-Description-Service
+# IKEA Product-Description Service
 
 The product description service should have components that display the title for the selected 
 product, along with a smaller discription below it. 
@@ -27,7 +27,7 @@ The "Check your local store" button will pull the page down to the
 
 ## Usage
 
-> Some usage instructions
+TODO: Some usage instructions
 
 ### Installing Dependencies
 
