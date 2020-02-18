@@ -30,25 +30,25 @@ There are several diffrent ways the component could render.
 
 If the product is new, a special tag will be displayed in the top left corner.
 
-#### ![](/assets/readMe/NEW-item-tag.png) 
+![](/assets/readMe/NEW-item-tag.png) 
 
 If a product is under the `IKEA Family Sale` then it will render like this.
 
-#### ![](/assets/readMe/IKEA-Family-Sale.png) 
+![](/assets/readMe/IKEA-Family-Sale.png) 
 
 A product that is on sale for a discounted price will render like this. 
 
 > If there is a disclamer to go with the product, it will render a warning message below the product rating.
 
-#### ![](/assets/readMe/On-sale:warning-label.png) 
+![](/assets/readMe/On-sale:warning-label.png) 
 
 Products will sometimes have a `Not quite perfect?` tag. This is seen on a few products with many options.
 
-#### ![](/assets/readMe/Not-quite-perfect-tag.png)
+![](/assets/readMe/Not-quite-perfect-tag.png)
 
 A product might sometimes not have a description.
 
-#### ![](/assets/readMe/NoDescription.png)  
+![](/assets/readMe/NoDescription.png)  
 
 ### Installing Dependencies
 
