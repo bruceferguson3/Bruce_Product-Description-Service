@@ -26,13 +26,15 @@ The "Check your local store" button will pull the page down to the
 
 ## Pictures of the Service
 
-There are several diffrent ways the component could render.
+There are several different ways the component could render.
 
 If the product is new, a special tag will be displayed in the top left corner.
 
 ![](/assets/readMe/NEW-item-tag.png) 
 
 If a product is under the `IKEA Family Sale` then it will render like this.
+
+> If there are options for a product, such as color or size, then it will render a clickable display. If clicked, the different sub-options for each option will be shown.
 
 ![](/assets/readMe/IKEA-Family-Sale.png) 
 
